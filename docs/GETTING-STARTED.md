@@ -41,6 +41,7 @@ the corresponding `openstack-k8s-agent-tools` skill with `$` instead.
 | `/bug` | `/bug OSPRH-2345` | Bug fix planning |
 | `/task-executor` | `/task-executor` | Plan execution with checkpointing |
 | `/code-review` | `/code-review 438` | Code review |
+| `/dependency-review` | `/dependency-review 123` | Go dependency/security bump PR review, including recursive Go-version compatibility |
 | `/backport-review` | `/backport-review` | Downstream vs upstream comparison |
 | `/jira` | `/jira OSPRH-2345` | Jira hierarchy validation |
 
@@ -89,6 +90,9 @@ See [design/feature.md](design/feature.md) for a full walkthrough.
 # Review a PR by number
 /code-review 438
 
+# Review a Go dependency or security bump PR
+/dependency-review 123
+
 # Review a branch diff against main
 /code-review my-feature-branch
 
@@ -98,6 +102,12 @@ See [design/feature.md](design/feature.md) for a full walkthrough.
 
 When only a number is provided, the skill uses `gh pr diff <number>` to
 fetch the PR. If `gh` is not available, it falls back to WebFetch.
+
+`/dependency-review` checks the proposed module graph, including transitive
+dependencies and their Go version requirements. Add `--approve` or `--merge`
+only when you want the skill to perform that GitHub action and the review gates
+pass. For example, `/dependency-review 123 --approve` requests approval, while
+`/dependency-review 123 --approve --merge` requests both actions.
 
 ## Debugging a Deployed Operator
 

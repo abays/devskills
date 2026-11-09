@@ -23,6 +23,7 @@ Documentation for openstack-k8s-operators operator development and troubleshooti
 | **task-executor** | Plan execution with checkpointing | `/task-executor` |
 | **commit-message** | Draft a commit message with a Jira line when Jira-sourced | `/commit-message OSPRH-2345` |
 | **code-review** | Code review (dev-docs conventions) | `/code-review` |
+| **dependency-review** | Go dependency and security bump PR review | `/dependency-review 123` |
 | **backport-review** | Downstream vs upstream patch comparison | `/backport-review` |
 | **jira** | Jira hierarchy validation and integration | `/jira OSPRH-2345` |
 
